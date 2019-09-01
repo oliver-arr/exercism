@@ -3,6 +3,6 @@
 // convenience to get you started writing code faster.
 //
 
-export const colorCode = () => {};
+export const colorCode = (color) => COLORS.findIndex(element => element === color);
 
 export const COLORS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white'];
