@@ -1,12 +1,12 @@
 export const value = (bandColours) => {
 
-  let bandColour = [];
+  let bandColour = '';
 
   bandColours.forEach((colour) => {
-    bandColour.push(COLOURS.indexOf(colour));
+    bandColour += `${COLOURS.indexOf(colour)}`;
     
   });
-  return +bandColour.join('');
+  return +bandColour;
 };
 
 export const COLOURS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white'];
