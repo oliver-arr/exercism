@@ -1,12 +1,12 @@
 export const value = (bandColours) => {
 
-  let bandColour = '';
+  let resistorValue = '';
 
-  bandColours.forEach((colour) => {
-    bandColour += `${COLOURS.indexOf(colour)}`;
-    
+  bandColours.forEach(bandColour => {
+    resistorValue += `${COLOURS.indexOf(bandColour)}`;
   });
-  return +bandColour;
+  
+  return +resistorValue;
 };
 
 export const COLOURS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white'];
