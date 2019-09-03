@@ -1,6 +1,12 @@
-//
-// This is only a SKELETON file for the 'Resistor Color Duo' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const value = (bandColours) => {
 
-export const value = (colours) => {console.log(colours)};
+  let bandColour = [];
+
+  bandColours.forEach((colour) => {
+    bandColour.push(COLOURS.indexOf(colour));
+    
+  });
+  return +bandColour.join('');
+};
+
+export const COLOURS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white'];
