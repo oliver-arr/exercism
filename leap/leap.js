@@ -1,13 +1,14 @@
-/*
-Given a year, report if it is a leap year.
+export const isLeap = (year) => {
 
-The tricky thing here is that a leap year in the Gregorian calendar occurs:
+// year divisible by 4, not divisible by 100: leap year, OR
+  // year divisible by 400: leap year
+if(year % 4 === 0 && year % 100 !== 0 || year % 400 === 0){
+  return true;
 
-on every year that is evenly divisible by 4
-  except every year that is evenly divisible by 100
-    unless the year is also evenly divisible by 400
-
-For example, 1997 is not a leap year, but 1996 is. 1900 is not a leap year, but 2000 is.
-*/
-
-export const isLeap = (year) => {console.log(year)};
+// year not divisible by 4: common year, OR
+  // year divisible by 100, not divisible by 400: common year, OR
+    // year divisible by 200, not divisible by 400: common year
+  } else if (year % 4 !== 0 || year % 100 === 0 && year % 400 !== 0 || year % 200 === 0 && year % 400 !== 0){
+    return false;
+  }
+};
