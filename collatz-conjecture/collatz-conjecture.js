@@ -1,22 +1,19 @@
-export const steps = (number) => {
+export const steps = number => {
   let stepCount = 0;
 
   // error handling
-  if(number === 0){
-    throw new Error('Only positive numbers are allowed')
-  } else if(number < 0){
-    throw new Error('Only positive numbers are allowed')
-  }
-  
+  if(number < 1)
+    throw new Error('Only positive numbers are allowed');
+
   while(number > 1){
     if(number % 2 === 0){
       number /= 2;
-      stepCount++;
     } else {
       number *= 3;
       number += 1;
-      stepCount++;
     }
+    
+    stepCount++;
   } 
 
   return stepCount;
