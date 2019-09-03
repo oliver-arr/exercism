@@ -1,3 +1,1 @@
-export const reverseString = (str) => {
-  console.log(str);
-};
+export const reverseString = str => [...str].reverse().join('');
