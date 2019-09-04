@@ -3,14 +3,18 @@ export class Triangle {
     this.sideOne = sideOne;
     this.sideTwo = sideTwo;
     this.sideThree = sideThree;
+    this.allSides = [this.sideOne, this.sideTwo, this.sideThree];
+
   }
 
   isEquilateral() {
-    return ([this.sideOne, this.sideTwo, this.sideThree].every(side => side === this.sideOne)) ? true: false;
+    return this.allSides.every(side => side === this.sideOne);
   }
 
-  isIsosceles(side = this.sideOne, fromIndex = 1) {
-    return ([this.sideOne, this.sideTwo, this.sideThree].includes(side, fromIndex)) ? true: this.isIsosceles(this.sideThree, 0);
+  isIsosceles() {   
+    if([...new Set(this.allSides)].length !== this.allSides.length){
+      return true;
+    } else return false;
   }
 
   kind() {
@@ -18,6 +22,8 @@ export class Triangle {
       return 'equilateral'
     } else if(this.isIsosceles()){
       return 'isosceles';
+    } else {
+      return 'scalene';
     }
   }
 }
