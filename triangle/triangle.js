@@ -8,7 +8,11 @@ export class Triangle {
   }
 
   // exception handling
-  
+  checkForIllegalTriangle(){
+    if(this.allSides.includes(0)) {
+      throw new Error('All sides have to be of length > 0');
+    }
+  }
 
   isEquilateral() {
     return this.allSides.every(side => side === this.sideOne);
@@ -23,6 +27,8 @@ export class Triangle {
   }
 
   kind() {
+    this.checkForIllegalTriangle();
+
     if(this.isEquilateral()){
       return 'equilateral';
     } else if(this.isIsosceles()){
