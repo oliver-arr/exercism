@@ -9,7 +9,7 @@ export class Triangle {
 
   // exception handling
   checkForIllegalTriangle(){
-    if(this.allSides.includes(0)) {
+    if(this.allSides.some(length => length <= 0)){
       throw new Error('All sides have to be of length > 0');
     }
   }
