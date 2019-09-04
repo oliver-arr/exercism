@@ -7,11 +7,16 @@ export class Triangle {
 
   }
 
+  // exception handling
+  
+
   isEquilateral() {
     return this.allSides.every(side => side === this.sideOne);
   }
 
   isIsosceles() {   
+  // Set only accepts unique values, therfore,
+  // if duplicates are found, a comparison is made between old and new array lengths.
     if([...new Set(this.allSides)].length !== this.allSides.length){
       return true;
     } else return false;
@@ -19,7 +24,7 @@ export class Triangle {
 
   kind() {
     if(this.isEquilateral()){
-      return 'equilateral'
+      return 'equilateral';
     } else if(this.isIsosceles()){
       return 'isosceles';
     } else {
