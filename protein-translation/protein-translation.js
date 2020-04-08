@@ -1,6 +1,8 @@
 export const translate = rna => {
   let match = [];
 
+  if (!rna) return match;
+
   const proteinTranslation = {
     Methionine: ["AUG"],
     Phenylalanine: ["UUU", "UUC"],
@@ -12,10 +14,26 @@ export const translate = rna => {
     STOP: ["UAA", "UAG", "UGA"]
   };
 
-  Object.keys(proteinTranslation).forEach(protein => {
-    if (proteinTranslation[protein].includes(rna)) {
-      match.push(protein);
-    }
-  });
+  let str;
+  let rnaLength = rna.length;
+
+  let start = 0;
+  let end = 3;
+
+  const codonTranslator = str => {
+    Object.keys(proteinTranslation).forEach(protein => {
+      if (proteinTranslation[protein].includes(str)) {
+        match.push(protein);
+      }
+    });
+  };
+
+  do {
+    str = rna.substring(start, end);
+    codonTranslator(str);
+    start = end;
+    end += 3;
+  } while ((rnaLength -= 3));
+
   return match;
 };
