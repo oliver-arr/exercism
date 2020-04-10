@@ -1,40 +1,40 @@
 import { translate } from "./protein-translation";
 
 describe("ProteinTranslation", () => {
-  test("Empty RNA has no proteins", () => {
+  xtest("Empty RNA has no proteins", () => {
     expect(translate()).toEqual([]);
   });
 
-  test("Methionine codon translates into protein", () => {
+  xtest("Methionine codon translates into protein", () => {
     expect(translate("AUG")).toEqual(["Methionine"]);
   });
 
-  test("Phenylalanine codons translate into protein", () => {
+  xtest("Phenylalanine codons translate into protein", () => {
     expect(translate("UUUUUC")).toEqual(["Phenylalanine", "Phenylalanine"]);
   });
 
-  test("Leucine codons translate into protein", () => {
+  xtest("Leucine codons translate into protein", () => {
     expect(translate("UUAUUG")).toEqual(["Leucine", "Leucine"]);
   });
 
-  test("Serine codons translate into protein", () => {
+  xtest("Serine codons translate into protein", () => {
     expect(translate("UCUUCCUCAUCG")).toEqual([
       "Serine",
       "Serine",
       "Serine",
-      "Serine"
+      "Serine",
     ]);
   });
 
-  test("Tyrosine codons translate into protein", () => {
+  xtest("Tyrosine codons translate into protein", () => {
     expect(translate("UAUUAC")).toEqual(["Tyrosine", "Tyrosine"]);
   });
 
-  test("Cysteine codons translate into protein", () => {
+  xtest("Cysteine codons translate into protein", () => {
     expect(translate("UGUUGC")).toEqual(["Cysteine", "Cysteine"]);
   });
 
-  test("Tryptophan codon translates into protein", () => {
+  xtest("Tryptophan codon translates into protein", () => {
     expect(translate("UGG")).toEqual(["Tryptophan"]);
   });
 
@@ -54,15 +54,15 @@ describe("ProteinTranslation", () => {
     expect(translate("AUGUUUUCU")).toEqual([
       "Methionine",
       "Phenylalanine",
-      "Serine"
+      "Serine",
     ]);
   });
 
-  xtest("Stop codon ends translation", () => {
+  test("Stop codon ends translation", () => {
     expect(translate("AUGUUUUCUUAAAUG")).toEqual([
       "Methionine",
       "Phenylalanine",
-      "Serine"
+      "Serine",
     ]);
   });
 

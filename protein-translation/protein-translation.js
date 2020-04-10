@@ -1,4 +1,4 @@
-export const translate = rna => {
+export const translate = (rna) => {
   let match = [];
 
   if (!rna) return match;
@@ -11,29 +11,25 @@ export const translate = rna => {
     Tyrosine: ["UAU", "UAC"],
     Cysteine: ["UGU", "UGC"],
     Tryptophan: ["UGG"],
-    STOP: ["UAA", "UAG", "UGA"]
+    STOP: ["UAA", "UAG", "UGA"],
   };
 
-  let str;
-  let rnaLength = rna.length;
+  let codons = [];
+  // Convert rna in to codons of 3
+  for (let i = 0; i < rna.length; i += 3) {
+    codons.push(rna.substring(i, i + 3));
+  }
 
-  let start = 0;
-  let end = 3;
+  // Check for STOP codon - STILL NEEDS WORK
+  console.log(codons[0].includes(proteinTranslation.STOP[0]));
 
-  const codonTranslator = str => {
-    Object.keys(proteinTranslation).forEach(protein => {
-      if (proteinTranslation[protein].includes(str)) {
-        match.push(protein);
+  // Translate codons to protein
+  codons.forEach((codon) => {
+    for (let prop in proteinTranslation) {
+      if (proteinTranslation[prop].includes(codon)) {
+        match.push(prop);
       }
-    });
-  };
-
-  do {
-    str = rna.substring(start, end);
-    codonTranslator(str);
-    start = end;
-    end += 3;
-  } while ((rnaLength -= 3));
-
+    }
+  });
   return match;
 };
