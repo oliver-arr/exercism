@@ -20,8 +20,10 @@ export const translate = (rna) => {
     codons.push(rna.substring(i, i + 3));
   }
 
-  // Check for STOP codon - STILL NEEDS WORK
-  console.log(codons[0].includes(proteinTranslation.STOP[0]));
+  // Check for STOP codon at start of rna
+  if (proteinTranslation.STOP.includes(codons[0])) {
+    return match;
+  }
 
   // Translate codons to protein
   codons.forEach((codon) => {
