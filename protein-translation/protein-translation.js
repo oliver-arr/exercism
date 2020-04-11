@@ -1,5 +1,6 @@
 export const translate = (rna) => {
   let match = [];
+  let codons = [];
 
   if (!rna) return match;
 
@@ -14,7 +15,6 @@ export const translate = (rna) => {
     STOP: ["UAA", "UAG", "UGA"],
   };
 
-  let codons = [];
   // Convert rna in to codons of 3
   for (let i = 0; i < rna.length; i += 3) {
     codons.push(rna.substring(i, i + 3));
@@ -25,6 +25,16 @@ export const translate = (rna) => {
     return match;
   }
 
+  // STOP codon middle of codons
+  const index = codons.findIndex((codon) => {
+    if (proteinTranslation.STOP.includes(codon)) {
+      return codon;
+    }
+  });
+  if (index !== -1) {
+    codons = codons.slice(0, index);
+  }
+
   // Translate codons to protein
   codons.forEach((codon) => {
     for (let prop in proteinTranslation) {
@@ -33,5 +43,6 @@ export const translate = (rna) => {
       }
     }
   });
+
   return match;
 };
