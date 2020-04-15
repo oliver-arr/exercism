@@ -37,9 +37,9 @@ export const translate = (rna) => {
 
   // Translate codons to protein
   codons.forEach((codon) => {
-    for (let prop in proteinTranslation) {
-      if (proteinTranslation[prop].includes(codon)) {
-        match.push(prop);
+    for (let protein in proteinTranslation) {
+      if (proteinTranslation[protein].includes(codon)) {
+        match.push(protein);
       }
     }
   });
