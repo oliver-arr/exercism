@@ -40,7 +40,11 @@ export const translate = (rna) => {
     for (let protein in proteinTranslation) {
       if (proteinTranslation[protein].includes(codon)) {
         match.push(protein);
+        break;
       }
+      // else {
+      //   throw new Error("Invalid codon");
+      // }
     }
   });
 
