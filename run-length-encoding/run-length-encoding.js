@@ -6,26 +6,36 @@ export const encode = (data) => {
     if (temp.length === 0) {
       temp.push(currVal);
     } else if (currVal !== temp[0]) {
-      // console.log({ acc, currVal });
-      acc += `${temp[0]}`;
-      temp = [];
-      temp.push(currVal);
-      // pushes last character in data to acc
-      if (index === dataChars.length - 1) {
+      if (temp.length <= 1) {
         acc += `${temp[0]}`;
+        temp = [];
+        temp.push(currVal);
+
+        // pushes last character in data to acc
+        if (index === dataChars.length - 1) {
+          acc += `${temp[0]}`;
+        }
+      } else {
+        // same characters are pushed to acc
+        acc += `${temp.length}${temp[0]}`;
+
+        // pushes last character in data to acc
+        if (index === dataChars.length - 1) {
+          console.log({ acc, currVal, index, temp });
+          acc += `${temp.length}${temp[0]}`;
+        }
+
+        temp = [];
+        temp.push(currVal);
       }
+    } else if (index === dataChars.length - 1 && currVal === temp[0]) {
+      // deals with last char
+      temp.push(currVal);
+      acc += `${temp.length}${temp[0]}`;
+      console.log({ acc, currVal, index, temp });
+    } else {
+      temp.push(currVal);
     }
-    // else if (currVal === temp[temp.length - 1]) {
-    //   temp.push(currVal);
-    // } else if (currVal !== temp[temp.length - 1]) {
-    //   if (temp.length <= 1) {
-    //     acc += `${temp[0]}`;
-    //     temp = [];
-    //   } else {
-    //     acc += `${temp.length}${temp[0]}`;
-    //     temp = [];
-    //   }
-    // }
     return acc;
   }, "");
 
